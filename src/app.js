@@ -25,7 +25,7 @@ app.use('/api', favoriteRoutes)
 
 //Error catch
 app.use((error, req, res, next) => {
-    res.json(error)
+    res.status(500).json(error)
 })
 
 async function main() {
