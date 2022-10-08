@@ -11,6 +11,7 @@ const FavoriteController = container.get('FavoriteController')
 
 router.post('/favs', FavoriteController.addFav.bind(FavoriteController))
 router.get('/favs', FavoriteController.getFavs.bind(FavoriteController))
+router.post('/delete-favs', FavoriteController.deleteFav.bind(FavoriteController))
 
 
 

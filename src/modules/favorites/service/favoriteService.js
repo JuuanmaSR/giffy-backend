@@ -19,4 +19,8 @@ module.exports = class FavoriteService {
         return await this.favoriteRepository.findAllByUserId(id)
     }
 
+    async deleteFav(favorite) {
+        return await this.favoriteRepository.delete(favorite)
+    }
+
 }

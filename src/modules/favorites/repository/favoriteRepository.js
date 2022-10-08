@@ -33,8 +33,21 @@ module.exports = class FavoriteRepository {
         }
         return favoritesModels.map(fromModelToEntityFavorite)
     }
+    /**
+     * 
+     * @param {import('../entity/Favorite')} favorite 
+     */
+    async delete(favorite) {
+        if (!(favorite)) {
+            throw new Error("On favoriteRepository(delete) the favorite is undefined")
+        }
+        if (!(favorite.gifId)) {
+            throw new Error("On favoriteRepository(delete) the gif id  is undefined")
+        }
+        if (!(favorite.userId)) {
+            throw new Error("On favoriteRepository(delete) the user id  is undefined")
+        }
 
-    delete(favorite) {
-
+        return Boolean(await this.favoriteModel.destroy({ where: { gifId: favorite.gifId, userId: favorite.userId } }))
     }
 }

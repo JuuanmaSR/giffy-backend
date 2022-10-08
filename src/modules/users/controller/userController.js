@@ -49,7 +49,7 @@ module.exports = class UserController {
             if (!(savedUser)) {
                 throw new Error('On userController(saveUser) the user not was saved correctly')
             }
-            res.send(savedUser)
+            res.json({savedUser})
 
         } catch (error) {
             next(error)

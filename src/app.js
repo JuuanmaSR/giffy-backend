@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
     res.send('Hello world')
 })
 app.use(userRoutes)
-app.use(favoriteRoutes)
+app.use('/api', favoriteRoutes)
 
 //Error catch
 app.use((error, req, res, next) => {
-    res.status(500).send(error)
+    res.json(error)
 })
 
 async function main() {
