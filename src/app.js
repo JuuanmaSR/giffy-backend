@@ -1,4 +1,4 @@
-const { port, MYSQL_URL } = require('./config/envConfig')
+const { port,environment } = require('./config/envConfig')
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -11,6 +11,7 @@ const sequelize = container.get('Sequelize')
 // Routes
 const userRoutes = require('../routes/user')
 const favoriteRoutes = require('../routes/favorite')
+const testingRoutes = require('../routes/testing')
 
 // Middlewares
 app.use(cors())
@@ -22,6 +23,10 @@ app.get('/', (req, res) => {
 })
 app.use(userRoutes)
 app.use('/api', favoriteRoutes)
+if (environment === 'testing') {
+    app.use('/api',testingRoutes)
+}
+
 
 //Error catch
 app.use((error, req, res, next) => {

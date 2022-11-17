@@ -31,4 +31,8 @@ module.exports = class UserRepository {
         }
         return fromModelToEntityUser(userModel)
     }
+
+    async clear(){
+         await this.userModel.destroy({where: {}, truncate: true})
+    }
 }

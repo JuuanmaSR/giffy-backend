@@ -21,4 +21,8 @@ module.exports = class UserService {
         }
         return await this.userRepository.find(params)
     }
+
+    async clearUsers() {
+        return await this.userRepository.clear()
+    }
 }

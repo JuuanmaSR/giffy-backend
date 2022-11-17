@@ -4,7 +4,7 @@
   "description": "api para el backend de la aplicación de gifs",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=testing nodemon src/app.js",
     "schema:migrate": "npx sequelize-cli db:migrate",
     "schema:migrate:undo": "npx sequelize-cli db:migrate:undo",
     "start": "cross-env NODE_ENV=production node src/app.js",

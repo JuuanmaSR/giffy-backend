@@ -49,7 +49,7 @@ module.exports = class UserController {
             if (!(savedUser)) {
                 throw new Error('On userController(saveUser) the user not was saved correctly')
             }
-            res.json({savedUser})
+            res.json({ savedUser })
 
         } catch (error) {
             next(error)
@@ -86,10 +86,18 @@ module.exports = class UserController {
                 username: user.username
             }
             const jwt = jsonwebtoken.sign(userForJwt, secretToken, { expiresIn: '1d' })
-            res.json({jwt})
+            res.json({ jwt })
         } catch (error) {
             next(error)
         }
 
+    }
+
+    async clearUsers(req, res, next) {
+        try {
+            await this.userService.clearUsers()
+        } catch (error) {
+            next(error)
+        }
     }
 }
