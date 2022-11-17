@@ -92,10 +92,16 @@ module.exports = class UserController {
         }
 
     }
-
+    /**
+     * 
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
+     * @param {import('express').NextFunction} next 
+     */
     async clearUsers(req, res, next) {
         try {
             await this.userService.clearUsers()
+            res.status(204).end()
         } catch (error) {
             next(error)
         }
